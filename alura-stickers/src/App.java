@@ -18,7 +18,7 @@ public class App {
         HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
         String body = response.body();
         System.out.println(body);
-        
+
        
         // extrair os dados que interessam (titulo, poster, classificação)
 
@@ -30,5 +30,13 @@ public class App {
 
 
         // exibir e manipular os dados
+
+        for (Map<String,String> filme : listaDeFilmes) {
+            System.out.println(filme.get("title"));
+            System.out.println(filme.get("image"));
+            System.out.println(filme.get("imDbRating"));
+            System.out.println();
+            
+        }
     }
 }
