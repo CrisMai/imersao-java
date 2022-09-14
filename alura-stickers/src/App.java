@@ -3,6 +3,8 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.util.List;
+import java.util.Map;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -16,8 +18,17 @@ public class App {
         HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
         String body = response.body();
         System.out.println(body);
+        
        
         // extrair os dados que interessam (titulo, poster, classificação)
+
+        var parser = new JsonParser();
+        List<Map<String, String>> listaDeFilmes = parser.parse(body);
+        System.out.println("Tamanho: " + listaDeFilmes.size());
+        System.out.println("Getindex 0: " + listaDeFilmes.get(0));
+        System.out.println("ListaDeFilmes: " + listaDeFilmes);
+
+
         // exibir e manipular os dados
     }
 }
