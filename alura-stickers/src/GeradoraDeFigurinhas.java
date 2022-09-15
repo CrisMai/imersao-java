@@ -29,7 +29,7 @@ public class GeradoraDeFigurinhas {
 
 
         // configurar a fonte
-        var fonte = new Font(Font.SANS_SERIF, Font.BOLD, 72);
+        var fonte = new Font(Font.SANS_SERIF, Font.BOLD, 62);
         graphics.setColor(Color.ORANGE);
         graphics.setFont(fonte);
 

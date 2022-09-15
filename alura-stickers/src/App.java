@@ -12,18 +12,16 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         // fazer uma conexão HTTP e buscar os top 250 filmes
-
         String url = "https://mocki.io/v1/9a7c1ca9-29b4-4eb3-8306-1adb9d159060";
         URI endereco = URI.create(url);
         var client = HttpClient.newHttpClient();
         var request = HttpRequest.newBuilder(endereco).GET().build();
         HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
         String body = response.body();
-        System.out.println(body);
+       // System.out.println(body);
 
        
         // extrair os dados que interessam (titulo, poster, classificação)
-
         var parser = new JsonParser();
         List<Map<String, String>> listaDeFilmes = parser.parse(body);
         System.out.println("Tamanho: " + listaDeFilmes.size());
@@ -33,20 +31,21 @@ public class App {
 
         // exibir e manipular os dados
         var geradora = new GeradoraDeFigurinhas();
-        for (Map<String,String> filme : listaDeFilmes) {
+        for (int i = 0; i < 5; i++) {
 
-            String urlImagem = filme.get("image");
+            Map<String, String> filme = listaDeFilmes.get(i);
+
+            String urlImagem = filme.get("image").replaceAll("(@+)(.*).jpg$", "$1.jpg");
             String titulo = filme.get("title");
-            
+
             InputStream inputStream = new URL(urlImagem).openStream();
-            String nomeArquivo = titulo + " .png";
+            String nomeArquivo = "saida/" + titulo + ".png";
 
-            
             geradora.cria(inputStream, nomeArquivo);
-
             System.out.println(titulo);
             System.out.println();
-            
+
         }
+           
     }
 }
