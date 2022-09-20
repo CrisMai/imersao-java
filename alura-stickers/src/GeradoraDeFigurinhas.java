@@ -29,13 +29,13 @@ public class GeradoraDeFigurinhas {
 
 
         // configurar a fonte
-        var fonte = new Font(Font.SANS_SERIF, Font.BOLD, 62);
+        var fonte = new Font(Font.SANS_SERIF, Font.BOLD, 32);
         graphics.setColor(Color.ORANGE);
         graphics.setFont(fonte);
 
 
         // escrever uma frase na nova imagem
-        graphics.drawString("TOPZERA", 500, novaAltura - 100 );
+        graphics.drawString("TOPZERA", 80, novaAltura - 100 );
 
 
         // escrever a nova imagem em um arquivo
