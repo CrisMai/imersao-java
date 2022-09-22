@@ -13,15 +13,14 @@ public class App {
         //String url = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&start_date=2022-06-12&end_date=2022-06-14";
         //ExtratorDeConteudo extrator = new ExtratorDeConteudoDaNasa();
 
-        String url = "http://localhost:8080/linguagens";
+        String url = "https://teste-app-cris.herokuapp.com/linguagens";
         ExtratorDeConteudo extrator = new ExtratorDeConteudoIMDB();
 
         var http = new ClienteHttp();
         String json = http.buscaDados(url);
        
 
-        // exibir e manipular os dados
-        System.out.println("teste");
+        // exibir e manipular os dados;
         List<Conteudo> conteudos = extrator.extraiConteudos(json);
 
         var geradora = new GeradoraDeFigurinhas();
